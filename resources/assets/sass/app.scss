@@ -12,3 +12,66 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+body, .container-fluid {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-nav li.divider {
+  color: #fff;
+  padding-top: 7px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.alert {
+	margin: 0 -15px 20px -15px;
+}
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 4;
+  }
+}
+
+.card-columns .card {
+    margin-bottom: 1.25rem;
+}
+
+.material-icons {
+  position: relative;
+  top: 6px;
+
+  &.verified {
+    font-size: 40px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: rgba(0, 144, 7, 1);
+  }
+
+  &.new_releases, &.home {
+    color: rgba(255, 0, 0, 1);
+  }
+
+  &.favorite {
+    color: rgba(215, 35, 0, 1);
+  }
+
+  &.today, &.room {
+    color: rgba(0, 0, 0, .4);
+  }
+
+  &.pets {
+  top: 4px;
+  }
+}
