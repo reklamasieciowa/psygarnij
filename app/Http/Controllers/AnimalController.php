@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input as Input;
 use Auth;
+use Intervention\Image\Facades\Image;
 
 class AnimalController extends Controller
 {
@@ -69,6 +70,15 @@ class AnimalController extends Controller
         $animal->homeless = $request->homeless;
         if(Input::hasFile('avatar')){
             $path = $request->file('avatar')->store('uploads/img');
+
+            $img = Image::make($request->file('avatar')->getRealPath())->resize(600, 450);
+
+            $watermark = Image::make(public_path('img/psygarnij.png'));
+
+            $img->insert($watermark, 'bottom-right', 10, 10);
+
+            $img->save('storage/'.$path);
+
             $animal->avatar = 'storage/'.$path;
         }
         $animal->description = $request->description;
@@ -132,6 +142,15 @@ class AnimalController extends Controller
         
 if(Input::hasFile('avatar')){
             $path = $request->file('avatar')->store('uploads/img');
+
+            $img = Image::make($request->file('avatar')->getRealPath())->resize(600, 450);
+
+            $watermark = Image::make(public_path('img/psygarnij.png'));
+
+            $img->insert($watermark, 'bottom-right', 10, 10);
+
+            $img->save('storage/'.$path);
+
             $animal->avatar = 'storage/'.$path;
         }
         $animal->save();
