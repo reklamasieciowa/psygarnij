@@ -13,7 +13,7 @@
     <div class="row">
                 <div class="col-lg-12 animal">
                         <div class="col-lg-6">
-                            <img class="img img-responsive" src="{{asset($animal->avatar)}}" alt="{{$animal->name}}">
+                            <img class="img img-responsive" src="{{ asset('storage/'.$animal->avatar) }}" alt="{{$animal->name}}">
                             <div class="homeless">
                                 @if($animal->homeless == 1)
                                     <p class="error">Szuka domu!</p>

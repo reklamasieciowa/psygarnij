@@ -39,7 +39,7 @@
 
             <div class="card animal">
             <a href="{{route('animal', $animal->id)}}">
-                    <img class="img img-fluid card-img-top" src="{{asset($animal->avatar)}}" alt="{{$animal->name}}" alt="{{$animal->name}}">
+                    <img class="img img-fluid card-img-top" src="{{ asset('storage/'.$animal->avatar) }}" alt="{{$animal->name}}" alt="{{$animal->name}}">
             </a>
             @if($animal->verified == 1)
                 <i class="material-icons verified" title="Zweryfikowane">verified_user</i>

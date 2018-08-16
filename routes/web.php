@@ -24,17 +24,12 @@ Route::group(['middleware' => 'checkifadmin'], function () {
 	Route::patch('/strona/edytuj/{page}', 'PageController@update');
 	Route::get('/strona/dodaj/', 'PageController@create')->name('pagecreate');
 	Route::put('/strona/dodaj/', 'PageController@store');
-	
-	Route::get('/strona/usun/{page}', 'PageController@beforedestroy')->name('pagebeforedelete'); //del
-
 	Route::delete('/strona/usun/{page}', 'PageController@destroy')->name('pagedestroy');
 
 	Route::get('/zwierzak/dodaj', 'AnimalController@create')->name('animalcreate');
 	Route::put('/zwierzak/dodaj', 'AnimalController@store');
-
 	Route::get('/zwierzak/edytuj/{animal}', 'AnimalController@edit')->name('animaledit');
 	Route::patch('/zwierzak/edytuj/{animal}', 'AnimalController@update');
-
 	Route::delete('/zwierzak/usun/{animal}', 'AnimalController@destroy')->name('animaldestroy');
 });
 

@@ -90,7 +90,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-2">
-                                    <img class="img img-responsive" src="{{asset($animal->avatar)}}" width="150px" />
+                                    <img class="img img-responsive" src="{{ asset('storage/'.$animal->avatar) }}" width="150px" />
                                 </div>
                                 <div class="form-group col-lg-10">
                                     <label for="avatar">Nowe zdjęcie (jpg do 2MB)</label>

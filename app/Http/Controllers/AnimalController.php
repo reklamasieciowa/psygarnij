@@ -145,13 +145,23 @@ if(Input::hasFile('avatar')){
 
             $img = Image::make($request->file('avatar')->getRealPath())->resize(600, 450);
 
-            $watermark = Image::make(public_path('img/psygarnij.png'));
+            //add waternark to image
+            if(Storage::exists('uploads/img/psygarnij.png')) {
 
-            $img->insert($watermark, 'bottom-right', 10, 10);
+                $watermark = Image::make('storage/uploads/img/psygarnij.png');
+
+                $img->insert($watermark, 'bottom-right', 10, 10);
+            }
 
             $img->save('storage/'.$path);
 
-            $animal->avatar = 'storage/'.$path;
+            //delete previous avatar file if exists
+            if(Storage::exists($animal->avatar)) {
+                Storage::delete($animal->avatar);
+            }
+
+            //set new avatar path
+            $animal->avatar = $path;
         }
         $animal->save();
         $request->session()->flash('status', $animal->name.' zapisany.');
