@@ -10483,6 +10483,10 @@ body,
   padding: 0;
 }
 
+.navbar-nav {
+  width: 100%;
+}
+
 .navbar-nav li.divider {
   color: #fff;
   padding-top: 7px;
@@ -10559,5 +10563,9 @@ body,
 
 .btn a:hover {
   text-decoration: none;
+}
+
+.modal-header.close {
+  float: right;
 }
 

@@ -5,8 +5,8 @@
     <span class="navbar-toggler-icon"></span>
 </button>
 
-<div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
-    <ul class="navbar-nav navbar-expand-lg">
+<div class="collapse navbar-collapse d-flex justify-content-around nav-fill" id="navbarSupportedContent">
+    <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Adopcje</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('zaginione') }}">Zaginione</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('psygarniete') }}">Psygarnięte</a></li>
@@ -43,6 +43,7 @@
         <li class="float-right"><a class="nav-link" href="{{ route('login') }}">Zaloguj</a></li>
         <li class="float-right"><a class="nav-link" href="{{ route('register') }}">Załóż konto</a></li>
         @else
+        <li class="nav-item float-right"><a href="{{ route('admin.index') }}" class="nav-link">Admin panel</a></li>
         <li class="nav-item dropdown float-right">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->name }} <span class="caret"></span>

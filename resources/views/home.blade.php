@@ -3,11 +3,6 @@
 @section('content')
 <div class="container content">
     <div class="row">
-        <div class="col-lg-12">
-            @include('layouts.flash')
-            @include('layouts.errors')
-        </div>
-
         @php
         $count = $animals->total();
         @endphp
@@ -80,8 +75,8 @@
                     <div class="modal-content">
 
                       <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
                         <h4 class="modal-title">Czy na pewno usunąć {{$animal->name}}?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
                     </div>
 
                     <div class="modal-body">

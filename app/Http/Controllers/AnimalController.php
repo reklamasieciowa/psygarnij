@@ -180,11 +180,12 @@ if(Input::hasFile('avatar')){
         $animal = Animal::find($animal->id);
         $animal->delete();
 
-        //find and delete animal avatar
-        $avatar = 'avatars/'.$animal->id.'.jpg';
-        Storage::delete($avatar);
+        //delete avatar file if exists
+        if(Storage::exists($animal->avatar)) {
+            Storage::delete($animal->avatar);
+        }
 
         $request->session()->flash('status', $animal->name.' usunięty.');
-        return redirect()->route('home');
+        return redirect()->back();
     }
 }

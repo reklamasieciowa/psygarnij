@@ -32,6 +32,10 @@ Route::group(['middleware' => 'checkifadmin'], function () {
 	Route::patch('/zwierzak/edytuj/{animal}', 'AnimalController@update');
 	Route::delete('/zwierzak/usun/{animal}', 'AnimalController@destroy')->name('animaldestroy');
 
+	Route::get('/admin', [
+		'uses' => 'AdminController@index',
+		'as' => 'admin.index'
+	]);
 });
 
 Route::get('/zwierzak/{animal}', 'AnimalController@show')->name('animal');
