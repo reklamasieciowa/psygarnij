@@ -10528,6 +10528,7 @@ body,
   top: 5px;
   right: 5px;
   color: #009007;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
 .material-icons.new_releases,
@@ -10546,5 +10547,17 @@ body,
 
 .material-icons.pets {
   top: 4px;
+}
+
+.btn {
+  margin-right: 20px;
+}
+
+.btn a {
+  color: #fff;
+}
+
+.btn a:hover {
+  text-decoration: none;
 }
 

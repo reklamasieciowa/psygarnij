@@ -49,7 +49,7 @@
                     <p class="imie"><i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat</p>
                 </h5>
                 <p class="card-text opis">{{str_limit($animal->description, 50)}}</p>
-                <a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Więcej</a>
+                <a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Zobacz</a>
             </div>
             <ul class="list-group list-group-flush homeless">
                 @if($animal->homeless == 1)

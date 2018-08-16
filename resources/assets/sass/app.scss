@@ -57,6 +57,7 @@ body, .container-fluid {
     top: 5px;
     right: 5px;
     color: rgba(0, 144, 7, 1);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
   }
 
   &.new_releases, &.home {
@@ -75,3 +76,18 @@ body, .container-fluid {
   top: 4px;
   }
 }
+
+.btn {
+  margin-right: 20px;
+
+  a {
+  color: #fff;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+
