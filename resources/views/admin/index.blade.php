@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <table class="table">
+            <table class="table table-striped table-hover ">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -18,8 +18,8 @@
                   <th scope="col"><i class="material-icons room">room</i></th>
                   <th scope="col">Status</th>
                   <th scope="col"><i class="material-icons today">today</i></th>
-                  <th scope="col">Ed</th>
-                  <th scope="col">Us</th>
+                  <th scope="col">Edytuj</th>
+                  <th scope="col">Usuń</th>
               </tr>
           </thead>
 
@@ -28,7 +28,7 @@
             @foreach($animals as $animal)
             <tr>
               <th scope="row">{{ $animal->id }}</th>
-              <td><img src="{{asset('storage/'.$animal->avatar)}}" width="200px;"></td>
+              <td><img src="{{asset($animal->avatar)}}" width="100px;"></td>
               <td>{{ $animal->name }}, {{ $animal->sex }}, {{ $animal->age }} lat</td>
               <td>{{$animal->location}}</td>
               <td>@if($animal->homeless == 1)
@@ -39,9 +39,9 @@
                 <i class="material-icons favorite">favorite</i>
             @endif</td>
             <td>{{Carbon\Carbon::parse($animal->added)->diffForHumans()}}</td>
-            <td><a href="{{route('animaledit', $animal->id)}}"><button class="btn btn-primary">Edytuj</button></a>
+            <td><a href="{{route('animaledit', $animal->id)}}"><button class="btn btn-primary btn-sm"><i class="material-icons">create</i></button></a>
             </td>
-            <td><button class="btn btn-danger usun" data-toggle="modal" data-target="#modalusun-{{$animal->id}}">Usuń</button>
+            <td><button class="btn btn-danger usun btn-sm" data-toggle="modal" data-target="#modalusun-{{$animal->id}}"><i class="material-icons">delete_sweep</i></button>
             <div class="modal fade" tabindex="-1" role="dialog" id="modalusun-{{$animal->id}}">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">

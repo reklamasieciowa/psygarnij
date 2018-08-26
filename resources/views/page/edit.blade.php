@@ -35,7 +35,7 @@
 
                                 <div class="form-group col-lg-12">
                                     <label for="body">Treść</label>
-                                    <textarea class="form-control" id="body" name="body" rows="26">{{$page->body}}</textarea>
+                                    <textarea class="form-control tinymce" id="body" name="body" rows="26">{{$page->body}}</textarea>
                                 </div>
 
                                 <div class="form-group col-lg-12">
@@ -64,4 +64,8 @@
                 </div>
     </div>
 </div>
+@endsection
+
+@section('footerscripts')
+    @include('admin.layouts.tinymce.tinymce')
 @endsection

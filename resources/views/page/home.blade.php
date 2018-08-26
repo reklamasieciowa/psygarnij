@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('metatitle')
+<title>Nie kupuj, Psygarnij!</title>
+@endsection
+
+@section('metadescription')
+<meta name="description" content="Nie kupuj, Psygarnij!" />
+@endsection
+
 @section('content')
 <div class="container content">
     <div class="row">
@@ -34,16 +42,16 @@
 
             <div class="card animal">
             <a href="{{route('animal', $animal->id)}}">
-                    <img class="img img-fluid card-img-top" src="{{ asset('storage/'.$animal->avatar) }}" alt="{{$animal->name}}" alt="{{$animal->name}}">
+                    <img class="img img-fluid card-img-top" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}" alt="{{$animal->name}}">
             </a>
             @if($animal->verified == 1)
                 <i class="material-icons verified" title="Zweryfikowane">verified_user</i>
             @endif
               <div class="card-body">
                 <h5 class="card-title">
-                    <p class="imie"><i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat</p>
+                    <i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat
                 </h5>
-                <p class="card-text opis">{{str_limit($animal->description, 50)}}</p>
+                <div class="card-text zajawka opis">{{ str_limit(strip_tags($animal->description), 70) }}</div>
                 <a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Zobacz</a>
             </div>
             <ul class="list-group list-group-flush homeless">

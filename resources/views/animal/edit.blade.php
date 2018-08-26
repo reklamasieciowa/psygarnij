@@ -35,7 +35,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-lg-12">
-                                    <textarea class="form-control" id="description" name="description" rows="5">{{$animal->description}}</textarea>
+                                    <textarea class="form-control tinymce" id="description" name="description" rows="15">{{$animal->description}}</textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -88,18 +88,32 @@
                                     </div>
                                 </div>
                             </div>
+
+            <div class="row">
+                <div class="form-group col-lg-12">
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <label for="avatar">Zdjęcie (jpg do 2MB)</label>
+                        </div>
+                         <div class="col-lg-12">
+                            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                <i class="material-icons">add_photo_alternate</i> Wybierz
+                            </a>
+                         </div>
+                        <div class="col-lg-12">
+                            <img id="holder" style="margin:15px 0;max-height:150px;" src="{{ asset($animal->avatar) }}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                         <div class="col-lg-12">
+                            <input id="thumbnail" class="form-control" type="text" id="avatar" name="avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                             <div class="row">
-                                <div class="col-lg-2">
-                                    <img class="img img-responsive" src="{{ asset('storage/'.$animal->avatar) }}" width="150px" />
-                                </div>
-                                <div class="form-group col-lg-10">
-                                    <label for="avatar">Nowe zdjęcie (jpg do 2MB)</label>
-                                    <input type="file" class="form-control" id="avatar" name="avatar">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <hr />
-                                <div class="form-group col-lg-3">
+                                <div class="form-group col-lg-12">
                                 <button type="submit" class="btn btn-primary">Zapisz</button>
                                 </div>
                             </div>
@@ -108,4 +122,12 @@
                 </div>
     </div>
 </div>
+@endsection
+
+@section('footerscripts')
+    @include('admin.layouts.tinymce.tinymce')
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+    <script>
+         $('#lfm').filemanager('image');
+    </script>
 @endsection

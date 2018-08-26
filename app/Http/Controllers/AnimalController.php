@@ -19,10 +19,10 @@ class AnimalController extends Controller
     public function index()
     {
         $animals = Animal::where('homeless', '=', 1)->paginate(12);
-        return view('home', compact('animals'));
+        return view('page.home', compact('animals'));
     }
 
-     public function zaginione()
+    public function zaginione()
     {
         $animals = Animal::where('homeless', '=', 2)->paginate(12);
         return view('home', compact('animals'));
@@ -52,44 +52,60 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
+       $this->validate($request, [
             'name' => 'required',
             'age' => 'required',
             'description' => 'required',
             'sex' => 'required',
-            'homeless' => 'required',
-            'avatar' => 'image|max:2048',
+            'homeless' => 'required'
         ]);
 
-        $animal = new Animal;
-        $animal->name = $request->name;
-        $animal->animaltype_id = 1;
-        $animal->sex = $request->sex;
-        $animal->age = $request->age;
-        $animal->location = $request->location;
-        $animal->homeless = $request->homeless;
-        if(Input::hasFile('avatar')){
-            $path = $request->file('avatar')->store('uploads/img');
+       $animal = new Animal;
+       $animal->name = $request->name;
+       $animal->animaltype_id = 1;
+       $animal->sex = $request->sex;
+       $animal->age = $request->age;
+       $animal->location = $request->location;
+       $animal->homeless = $request->homeless;
 
-            $img = Image::make($request->file('avatar')->getRealPath())->resize(600, 450);
+       if($request->avatar){
+        $path = public_path(str_replace('laravel-filemanager', 'storage/uploads/img', $request->avatar));
 
-            $watermark = Image::make(public_path('img/psygarnij.png'));
+            $img = Image::make($path);
 
-            $img->insert($watermark, 'bottom-right', 10, 10);
+            $img->fit(600, 450);
 
-            $img->save('storage/'.$path);
+                //add waternark to image
+            if(Storage::exists('uploads/img/psygarnij.png')) {
 
-            $animal->avatar = 'storage/'.$path;
+                $watermark = Image::make('storage/uploads/img/psygarnij.png');
+
+                $img->insert($watermark, 'bottom-right', 10, 10);
+            }
+
+            $img->save($path);
+
+            $animal->avatar = $request->avatar;
+        } else {
+            //default avatar
+            if(Storage::exists('uploads/img/avatar.jpg')) {
+                $animal->avatar = 'storage/uploads/img/avatar.jpg';
+            }
         }
-        $animal->description = $request->description;
-        $animal->added = $request->added;
-        $animal->verified = 1;
-        $animal->user_id = Auth::user()->id;
-        
-        $animal->save();
-        $request->session()->flash('status', $animal->name.' zapisany.');
-        return redirect()->route('home');
-    }
+
+    $animal->description = $request->description;
+    $animal->added = $request->added;
+
+        //verified
+    $animal->verified = 0;
+
+        //user_id
+    $animal->user_id = Auth::User()->id;
+
+    $animal->save();
+    $request->session()->flash('status', $animal->name.' zapisany.');
+    return redirect()->route('home');
+}
 
     /**
      * Display the specified resource.
@@ -122,28 +138,31 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'age' => 'required',
             'added' => 'required',
             'description' => 'required',
             'sex' => 'required',
-            'homeless' => 'required',
-            'avatar' => 'image|max:2048',
+            'homeless' => 'required'
         ]);
 
         $animal->name = $request->name;
         $animal->age = $request->age;
-        $animal->added = $request->added;
         $animal->description = $request->description;
+        $animal->added = $request->added;
         $animal->sex = $request->sex;
         $animal->location = $request->location;
         $animal->homeless = $request->homeless;
         
-if(Input::hasFile('avatar')){
-            $path = $request->file('avatar')->store('uploads/img');
+        if($request->avatar){
+            $path = public_path(str_replace('laravel-filemanager', 'storage/uploads/img', $request->avatar));
 
-            $img = Image::make($request->file('avatar')->getRealPath())->resize(600, 450);
+
+            $img = Image::make($path);
+
+            $img->fit(600, 450);
 
             //add waternark to image
             if(Storage::exists('uploads/img/psygarnij.png')) {
@@ -153,16 +172,13 @@ if(Input::hasFile('avatar')){
                 $img->insert($watermark, 'bottom-right', 10, 10);
             }
 
-            $img->save('storage/'.$path);
+            $img->save($path);
 
-            //delete previous avatar file if exists
-            if(Storage::exists($animal->avatar)) {
-                Storage::delete($animal->avatar);
-            }
-
-            //set new avatar path
-            $animal->avatar = $path;
+            $animal->avatar = $request->avatar;
         }
+
+        $animal->description = $request->description;
+
         $animal->save();
         $request->session()->flash('status', $animal->name.' zapisany.');
         return redirect()->route('home');

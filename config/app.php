@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pl',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pl',
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +147,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
         /*
          * Package Service Providers...

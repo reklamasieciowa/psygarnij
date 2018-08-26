@@ -25,17 +25,17 @@ body, .container-fluid {
 .navbar-nav li.divider {
   color: #fff;
   padding-top: 7px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.content {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-left: 1.25rem;
+  margin-right: .25rem;
 }
 
 .alert {
-	margin: 0 -15px 20px -15px;
+  margin: 0 -15px 20px -15px;
+}
+
+.content {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .card-columns {
@@ -56,7 +56,7 @@ body, .container-fluid {
   top: 6px;
 
   &.verified {
-    font-size: 40px;
+    font-size: 3rem;
     position: absolute;
     top: 5px;
     right: 5px;
@@ -82,7 +82,8 @@ body, .container-fluid {
 }
 
 .btn {
-  margin-right: 20px;
+  margin-right: 1rem;
+  margin-top: 0.75rem;
 
   a {
   color: #fff;
@@ -95,6 +96,34 @@ body, .container-fluid {
 
 .modal-header {
   &.close {
-    float:right;
+    float:both;
+  }
+}
+
+.opis {
+  
+  &.pelny {
+    margin-top: 2rem;
+  }
+}
+
+#lfm {
+  color: #fff;
+}
+
+.table {
+  text-align: center;
+
+  th, td {
+    vertical-align: middle;
+  }
+
+  .btn {
+    margin: 0;
+  }
+
+  .material-icons {
+    top: 3px;
+    font-size: 16px;
   }
 }

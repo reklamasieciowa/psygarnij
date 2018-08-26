@@ -65,6 +65,7 @@
     </li>
     @endif
 </ul>
+@include('layouts.search')
 
 </div>
 </nav>

@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="col-lg-12 page-body">
-                        {{$page->body}}
+                        {!! $page->body !!}
                     </div>
 
                     @if (Auth::check() && Gate::allows('isadmin'))

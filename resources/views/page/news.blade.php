@@ -23,7 +23,7 @@
             </div>
 
             <div class="col-lg-12 news-body">
-                {{str_limit($page->body, 350)}}...
+                {{ str_limit(strip_tags($page->body), 350) }}
             </div>
 
             <div class="col-lg-12 added">

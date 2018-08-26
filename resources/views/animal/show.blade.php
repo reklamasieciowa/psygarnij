@@ -14,7 +14,7 @@
         <div class="col-lg-12 animal">
             <div class="row">
                 <div class="col-lg-6">
-                    <img class="img img-fluid" src="{{ asset('storage/'.$animal->avatar) }}" alt="{{$animal->name}}">
+                    <img class="img img-fluid" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}">
                 </div>
                 <div class="col-lg-6">
                     <div class="homeless">
@@ -27,7 +27,7 @@
                         @endif
                     </div>
                     <p class="imie"><i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat</p>
-                    <p class="opis">{{$animal->description}}</p>
+                    
                     <p class="lokalizacja"><i class="material-icons room">room</i> {{$animal->location}}</p>
                     <p class="dodany"><i class="material-icons today">today</i> Dodany {{Carbon\Carbon::parse($animal->added)->diffForHumans()}} przez {{$animal->user->name}}</p>
 
@@ -74,6 +74,9 @@
 
             </div>
             @endif
+        </div>
+        <div class="col-lg-12 opis pelny">
+            {!!$animal->description!!}
         </div>
     </div>
 </div>

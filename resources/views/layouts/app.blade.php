@@ -19,26 +19,29 @@
 <body>
     <div id="app" class="container-fluid">
         @include('layouts.nav')
-        <div class="container">
-<div class="row">
+
+        <div class="container beforecontent">
+            <div class="row">
                 <div class="col-lg-12">
-            @include('layouts.flash')
-            @include('layouts.errors')
+                    @include('layouts.flash')
+                    @include('layouts.errors')
+                </div>
+            </div>
         </div>
-</div>
-        </div>
+
         @yield('content')
     </div>
     <footer>
         @include('layouts.nav')
         
         <div id="credentials" class="col-lg-12">
-           @include('layouts.footer')
-       </div>
+         @include('layouts.footer')
+     </div>
 
-   </footer>
+ </footer>
 
-   <!-- Scripts -->
-   <script src="{{ asset('js/app.js') }}"></script>
+ <!-- Scripts -->
+ <script src="{{ asset('js/app.js') }}"></script>
+ @yield('footerscripts')
 </body>
 </html>

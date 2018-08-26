@@ -1,5 +1,7 @@
 <?php
 
+use App\Animal;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,9 +13,17 @@
 |
 */
 
+
+
 Auth::routes();
 
 Route::get('/', 'AnimalController@index')->name('home');
+
+Route::get('/szukaj', [
+	'uses' => 'SearchController@index',
+	'as' => 'search'
+]);
+
 Route::get('/zaginione/', 'AnimalController@zaginione')->name('zaginione');
 Route::get('/psygarniete/', 'AnimalController@psygarniete')->name('psygarniete');
 
