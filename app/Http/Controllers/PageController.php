@@ -43,6 +43,11 @@ class PageController extends Controller
             'body' => 'required',
         ]);
 
+        $messages = [
+            'unique' => 'Pole :attribute musi mieć unikalną wartość.',
+        ];
+
+
         $news = 0;
             
         if ($request->has('news')) {
@@ -122,7 +127,7 @@ class PageController extends Controller
 
         $page->save();
         $request->session()->flash('status', $page->title.' zapisana.');
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
     /**

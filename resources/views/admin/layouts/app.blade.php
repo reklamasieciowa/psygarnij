@@ -10,33 +10,33 @@
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="admin">
     <div id="app" class="container-fluid">
 
-                    @include('admin.layouts.nav')
+        @include('admin.layouts.nav')
 
-            <div class="container">
-                                    <div class="row">
-                <div class="col-lg-12 content">
-
-                            @include('layouts.flash')
-                            @include('layouts.errors')
-                    </div>
+       <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                @include('layouts.flash')
+                @include('layouts.errors')
+                <div class="row">
                     @yield('content')
                 </div>
             </div>
+        </div>
     </div>
-    <footer>
-        @include('admin.layouts.nav')
-        <div id="credentials" class="col-lg-12">
-         @include('admin.layouts.footer')
-     </div>
- </footer>
+</div>
+<footer>
+    <div id="credentials" class="col-lg-12">
+        @include('admin.layouts.footer')
+    </div>
+</footer>
 
- <!-- Scripts -->
- <script src="{{ asset('js/app.js') }}"></script>
-    @yield('footerScripts')
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('footerScripts')
 </body>
 </html>

@@ -7,7 +7,7 @@
             @include('layouts.flash')
             @include('layouts.errors')
         </div>
-        <div class="col-lg-12 animal">
+        <div class="col-lg-12 animal boxshadow roundcorners">
             <div class="animal">
                 <form method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -61,32 +61,52 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <div class="radio">
-                        <label>
-                            <input type="radio" name="homeless" id="homeless" value="1"
-                            @if(old('homeless') == 1)
-                            checked
-                            @endif
-                            >
-                            Do psygarnięcia
-                        </label>
-                        <label>
-                            <input type="radio" name="homeless" id="homeless" value="2"
-                            @if(old('homeless') == 2)
-                            checked
-                            @endif
-                            >
-                            Zaginiony
-                        </label>
-                        <label>
-                            <input type="radio" name="homeless" id="homeless" value="0" 
-                            @if(!empty(old('homeless')) && old('homeless') == 0)
-                            checked
-                            @endif
-                            >
-                            Psygarnięty
-                        </label>
+                            <label>
+                                <input type="radio" name="homeless" id="homeless" value="1"
+                                @if(old('homeless') == 1)
+                                checked
+                                @endif
+                                >
+                                Do psygarnięcia
+                            </label>
+                            <label>
+                                <input type="radio" name="homeless" id="homeless" value="2"
+                                @if(old('homeless') == 2)
+                                checked
+                                @endif
+                                >
+                                Zaginiony
+                            </label>
+                            <label>
+                                <input type="radio" name="homeless" id="homeless" value="0" 
+                                @if(!empty(old('homeless')) && old('homeless') == 0)
+                                checked
+                                @endif
+                                >
+                                Psygarnięty
+                            </label>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group col-lg-12">
+                        <div class="radio">
+                              <label>
+                                <input type="radio" name="verified" id="verified" value="0" 
+                                @if(!empty(old('verified')) && old('verified') == 0)
+                                checked
+                                @endif
+                                >
+                                Niezweryfikowany
+                            </label>
+                            <label>
+                                <input type="radio" name="verified" id="verified" value="1"
+                                @if(empty(old('verified')) or old('verified') == 1)
+                                checked
+                                @endif
+                                >
+                                Zweryfikowany
+                            </label>
+                        </div>
+                    </div>
             </div>
 
             <div class="row">

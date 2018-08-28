@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Animal;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Input as Input;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Input as Input;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class AnimalController extends Controller
@@ -25,13 +26,13 @@ class AnimalController extends Controller
     public function zaginione()
     {
         $animals = Animal::where('homeless', '=', 2)->paginate(12);
-        return view('home', compact('animals'));
+        return view('page.home', compact('animals'));
     }
 
     public function psygarniete()
     {
         $animals = Animal::where('homeless', '=', 0)->paginate(12);
-        return view('home', compact('animals'));
+        return view('page.home', compact('animals'));
     }
 
     /**
@@ -67,6 +68,7 @@ class AnimalController extends Controller
        $animal->age = $request->age;
        $animal->location = $request->location;
        $animal->homeless = $request->homeless;
+       $animal->verified = $request->verified;
 
        if($request->avatar){
         $path = public_path(str_replace('laravel-filemanager', 'storage/uploads/img', $request->avatar));
@@ -96,10 +98,7 @@ class AnimalController extends Controller
     $animal->description = $request->description;
     $animal->added = $request->added;
 
-        //verified
-    $animal->verified = 0;
-
-        //user_id
+    //user_id
     $animal->user_id = Auth::User()->id;
 
     $animal->save();
@@ -155,6 +154,7 @@ class AnimalController extends Controller
         $animal->sex = $request->sex;
         $animal->location = $request->location;
         $animal->homeless = $request->homeless;
+        $animal->verified = $request->verified;
         
         if($request->avatar){
             $path = public_path(str_replace('laravel-filemanager', 'storage/uploads/img', $request->avatar));
@@ -182,6 +182,22 @@ class AnimalController extends Controller
         $animal->save();
         $request->session()->flash('status', $animal->name.' zapisany.');
         return redirect()->route('home');
+    }
+
+    public function verify(Request $request, Animal $animal)
+    {
+        $animal = Animal::find($animal->id);
+
+        if($animal->verified == 0) {
+            $animal->verified = 1;
+        } else {
+            $animal->verified = 0;
+        }
+
+        $animal->save();
+
+        $request->session()->flash('status', $animal->name.' zapisany.');
+        return redirect()->back();
     }
 
     /**

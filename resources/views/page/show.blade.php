@@ -11,7 +11,7 @@
 @section('content')
 <div class="container content">
     <div class="row">
-                <div class="col-lg-12 page">
+                <div class="col-lg-12 page boxshadow roundcorners">
                     <div class="col-lg-12 page-title">
                         <h2>{{$page->title}}</h2>
                     </div>

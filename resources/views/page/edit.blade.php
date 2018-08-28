@@ -55,7 +55,7 @@
 
                             <div class="row">
                                 <hr />
-                                <div class="form-group col-lg-3">
+                                <div class="form-group col-lg-12">
                                 <button type="submit" class="btn btn-primary">Zapisz</button>
                                 </div>
                             </div>

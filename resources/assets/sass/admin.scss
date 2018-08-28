@@ -1,0 +1,104 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500&subset=latin-ext');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body, .container-fluid {
+	margin: 0;
+	padding: 0;
+}
+
+.alert {
+  margin: 0 -15px 20px -15px;
+}
+
+.content {
+	padding: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+nav {
+	.nav-link {
+		color: rgba(255,255,255,.85);
+		padding-left: 1.5rem!important;
+		padding-right: 1.5rem!important;
+
+		&:hover {
+			color: rgba(255,255,255,1)
+		}
+	}
+
+	.divider {
+		color: rgba(0,0,0,1);
+     padding-top: 7px;
+	}
+}
+
+.material-icons {
+  position: relative;
+  top: 6px;
+
+  &.icon--admin-dashboard {
+    font-size: 5rem;
+    top: 15px;
+    color: red;
+  }
+
+  &.new_releases, &.home {
+    color: rgba(255, 0, 0, 1);
+  }
+
+  &.favorite {
+    color: rgba(215, 35, 0, 1);
+  }
+
+  &.success {
+    color: #009007;
+  }
+}
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 4;
+  }
+}
+
+.card-columns .card {
+    margin-bottom: 1.25rem;
+}
+
+.table {
+  text-align: center;
+
+  th, td {
+    vertical-align: middle;
+  }
+
+  .btn {
+    margin: 0;
+  }
+
+  .material-icons {
+    top: 3px;
+    font-size: 16px;
+  }
+}
+
+.boxshadow {
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+}
+.roundcorners {
+    border-radius: 10px;
+    overflow: hidden;
+}
+

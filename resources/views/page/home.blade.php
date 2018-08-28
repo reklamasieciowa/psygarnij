@@ -40,7 +40,7 @@
         <div class="card-columns">
             @foreach($animals as $animal)
 
-            <div class="card animal">
+            <div class="card animal roundcorners boxshadow">
             <a href="{{route('animal', $animal->id)}}">
                     <img class="img img-fluid card-img-top" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}" alt="{{$animal->name}}">
             </a>
@@ -68,7 +68,7 @@
                  
             </ul>
 
-            @if (Auth::check() && Gate::allows('editanimal', $animal))
+            @if (Auth::check() && Gate::allows('isadmin'))
             <ul class="list-group list-group-flush admin-btn">
 
                 <li class="list-group-item error">

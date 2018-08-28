@@ -3,10 +3,6 @@
 @section('content')
 <div class="container content">
     <div class="row">
-        <div class="col-lg-12">
-            @include('layouts.flash')
-            @include('layouts.errors')
-        </div>
         <div class="col-lg-12 page">
             <form method="POST">
                 {{ csrf_field() }}
@@ -32,7 +28,7 @@
                         <input type="text" class="form-control" id="slug" name="slug" value="{{old('slug')}}" required>
                     </div>
 
-                    <div class="col-lg-12">
+                    <div class="form-group col-lg-12">
                         <label for="body">Treść</label>
                         <textarea class="form-control tinymce" id="body" name="body" rows="16">{{old('body')}}</textarea>
                     </div>

@@ -11,7 +11,7 @@
 @section('content')
 <div class="container content">
     <div class="row">
-        <div class="col-lg-12 animal">
+        <div class="col-lg-12 animal animal-single roundcorners boxshadow">
             <div class="row">
                 <div class="col-lg-6">
                     <img class="img img-fluid" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}">

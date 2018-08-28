@@ -1,5 +1,5 @@
         
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="{{ url('/') }}">Psygarnij</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,12 +14,7 @@
         <li class="nav-item"><a class="nav-link" href="{{ route('pageshow', ['pomoc']) }}">Pomoc</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('pageshow', ['o-nas']) }}">O nas</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('pageshow', ['kontakt']) }}">Kontakt</a></li>
-
-        @if (Gate::allows('addanimal') && Gate::denies('isadmin'))
-        <li class="divider">|</li>
-        <li class="float-right"><a href="{{ route('animalcreate') }}">Dodaj zwierzaka</a></li>
-        @endif
-
+        
         @if (Gate::allows('isadmin'))
         <li class="divider">|</li>
         <li class="nav-item dropdown float-right">
@@ -35,6 +30,7 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item float-right"><a href="{{ route('admin.index') }}" class="nav-link">Admin panel</a></li>
         @endif
 
         <!-- Authentication Links -->
@@ -43,7 +39,6 @@
         <li class="float-right"><a class="nav-link" href="{{ route('login') }}">Zaloguj</a></li>
         <li class="float-right"><a class="nav-link" href="{{ route('register') }}">Załóż konto</a></li>
         @else
-        <li class="nav-item float-right"><a href="{{ route('admin.index') }}" class="nav-link">Admin panel</a></li>
         <li class="nav-item dropdown float-right">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->name }} <span class="caret"></span>

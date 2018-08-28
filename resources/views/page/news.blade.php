@@ -16,26 +16,29 @@
             <hr />
         </div>
     </div>
+    <div class="row">
     @foreach($pages as $page)
-        <div class="row news">
-            <div class="col-lg-12 news-title">
-                <h2>{{$page->title}}</h2>
-            </div>
+        <div class="col-lg-6 news">
+            <div class="row boxshadow roundcorners">
+                <div class="col-lg-12 news-title">
+                    <h3>{{$page->title}}</h3>
+                </div>
 
-            <div class="col-lg-12 news-body">
-                {{ str_limit(strip_tags($page->body), 350) }}
-            </div>
+                <div class="col-lg-12 news-body">
+                    {{ str_limit(strip_tags($page->body), 350) }}
+                </div>
 
-            <div class="col-lg-12 added">
-                Dodano: {{Carbon\Carbon::parse($page->created_at)->diffForHumans()}}
-            </div>
+                <div class="col-lg-12 added">
+                   <i class="material-icons today">today</i> {{Carbon\Carbon::parse($page->created_at)->diffForHumans()}}
+                </div>
 
-            <div class="col-lg-12">
-                <a href="{{ route('pageshow', [$page->slug]) }}">Więcej</a>
-                <hr />
+                <div class="col-lg-12">
+                    <a class="btn btn-success" href="{{ route('pageshow', [$page->slug]) }}">Więcej</a>
+                </div>
             </div>
         </div>
     @endforeach
+    </div>
     <div class="row">
         <div class="col-lg-12">
             {{ $pages->links() }}

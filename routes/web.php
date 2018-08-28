@@ -42,10 +42,14 @@ Route::group(['middleware' => 'checkifadmin'], function () {
 	Route::patch('/zwierzak/edytuj/{animal}', 'AnimalController@update');
 	Route::delete('/zwierzak/usun/{animal}', 'AnimalController@destroy')->name('animaldestroy');
 
-	Route::get('/admin', [
-		'uses' => 'AdminController@index',
-		'as' => 'admin.index'
-	]);
+	Route::get('/zwierzak/weryfikacja/{animal}', 'AnimalController@verify')->name('animalverify');
+
+	Route::get('/admin', 'AdminController@index')->name('admin.index');
+
+	Route::get('/admin/zwierzaki', 'AdminController@animalsIndex')->name('admin.animals');
+	Route::get('/admin/strony', 'AdminController@pagesIndex')->name('admin.pages');
+
+
 });
 
 Route::get('/zwierzak/{animal}', 'AnimalController@show')->name('animal');
