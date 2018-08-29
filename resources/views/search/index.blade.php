@@ -29,9 +29,9 @@
 			<i class="material-icons verified" title="Zweryfikowane">verified_user</i>
 			@endif
 			<div class="card-body">
-				<h5 class="card-title">
+				<h3 class="card-title">
 					<i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat
-				</h5>
+				</h3>
 				<div class="card-text zajawka opis">{{ str_limit(strip_tags($animal->description), 70) }}</div>
 				<a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Zobacz</a>
 			</div>

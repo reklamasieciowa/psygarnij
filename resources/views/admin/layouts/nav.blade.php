@@ -30,9 +30,13 @@
         
         <li class="divider">|</li>
 
-        <li class="nav-item"><a class="nav-link" href="{{ route('zaginione') }}">Zwierzaki</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('zaginione') }}">Strony</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('zaginione') }}">Użytkownicy</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.animals') }}">Zwierzaki</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.pages') }}">Strony</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.users') }}">Użytkownicy</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.users') }}">Newsletter</a></li>
+
+        <li class="divider">|</li>
+
         <li class="nav-item"><a class="nav-link" href="{{ route('zaginione') }}">Ustawienia</a></li>
 
          <li class="divider">|</li>

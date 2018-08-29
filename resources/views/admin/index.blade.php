@@ -38,7 +38,7 @@
           <p class="card-text">Zarządzaj użytkownikami</p>
         </div>
         <ul class="list-group list-group-flush homeless">
-          <a href="#"><li class="list-group-item"><i class="material-icons">find_in_page</i> Przeglądaj</li></a>
+          <a href="{{ route('admin.users') }}"><li class="list-group-item"><i class="material-icons">find_in_page</i> Przeglądaj</li></a>
           <a href="#"><li class="list-group-item"><i class="material-icons success">add_box</i> Dodaj</li></a>
         </ul>
       </div>

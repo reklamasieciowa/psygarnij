@@ -9,23 +9,27 @@
 @import '~bootstrap/scss/bootstrap';
 
 .navbar {
-  background-color: #fff;
+  background-color: #343a40;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
   -moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
 
+  .navbar-nav {
+    width: 100%;
+  }
+
   .nav-link {
-    color: rgba(0, 0, 0, .85);
+    color: rgba(255, 255, 255, .85);
     font-size: 1rem;
     font-weight: 500;
 
     &:hover {
-      color: rgba(0, 0, 0, 1);
+      color: rgba(255, 255, 255, 1);
     }
   }
 
   .divider {
-  color: rgba(0, 0, 0, .7);
+  color: rgba(255, 255, 255, .85);
   padding-top: 7px;
   margin-left: 1.25rem;
   margin-right: .25rem;
@@ -35,10 +39,6 @@
 body, .container-fluid {
 	margin: 0;
 	padding: 0;
-}
-
-.navbar-nav {
-  width: 100%;
 }
 
 
@@ -52,6 +52,12 @@ body, .container-fluid {
 }
 
 .card-columns {
+  // display: flex;
+  // flex-wrap: wrap;
+  // flex-direction: row;
+  // align-content: flex-start;
+
+
   @include media-breakpoint-only(lg) {
     column-count: 3;
   }
@@ -62,10 +68,28 @@ body, .container-fluid {
 
 .card-columns .card {
     margin-bottom: 1.25rem;
+    font-size: .9rem;
+
+    .card-title {
+      margin-bottom: 0;
+    }
+
+    .list-group-item {
+      border: 1px solid rgba(0, 0, 0, .1)
+    }
 }
 
 .animal {
   background: #fff;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 500;
+
+    a {
+      color: #000;
+    }
+  }
 
   &.animal-single {
     padding: 15px; 
@@ -73,6 +97,10 @@ body, .container-fluid {
 
   form {
     margin-top: 15px;
+  }
+
+  .zajawka {
+    margin-top: 10px;
   }
 }
 
@@ -183,4 +211,8 @@ body, .container-fluid {
 .roundcorners {
     border-radius: 10px;
     overflow: hidden;
+}
+
+a:hover {
+  text-decoration: none;
 }

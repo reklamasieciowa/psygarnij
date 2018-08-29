@@ -184,6 +184,14 @@ class AnimalController extends Controller
         return redirect()->route('home');
     }
 
+    //Admin
+
+    public function animalsIndex()
+    {
+        $animals = Animal::all();
+        return view('admin.animals', compact('animals'));
+    }
+
     public function verify(Request $request, Animal $animal)
     {
         $animal = Animal::find($animal->id);
@@ -196,7 +204,7 @@ class AnimalController extends Controller
 
         $animal->save();
 
-        $request->session()->flash('status', $animal->name.' zapisany.');
+        $request->session()->flash('status', $animal->name.' zweryfikowany.');
         return redirect()->back();
     }
 

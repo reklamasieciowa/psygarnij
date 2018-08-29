@@ -11,6 +11,7 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body class="admin">
     <div id="app" class="container-fluid">

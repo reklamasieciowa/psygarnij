@@ -10472,23 +10472,27 @@ a.text-dark:focus {
 }
 
 .navbar {
-  background-color: #fff;
+  background-color: #343a40;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
+.navbar .navbar-nav {
+  width: 100%;
+}
+
 .navbar .nav-link {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 1rem;
   font-weight: 500;
 }
 
 .navbar .nav-link:hover {
-  color: black;
+  color: white;
 }
 
 .navbar .divider {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.85);
   padding-top: 7px;
   margin-left: 1.25rem;
   margin-right: .25rem;
@@ -10498,10 +10502,6 @@ body,
 .container-fluid {
   margin: 0;
   padding: 0;
-}
-
-.navbar-nav {
-  width: 100%;
 }
 
 .alert {
@@ -10529,10 +10529,28 @@ body,
 
 .card-columns .card {
   margin-bottom: 1.25rem;
+  font-size: .9rem;
+}
+
+.card-columns .card .card-title {
+  margin-bottom: 0;
+}
+
+.card-columns .card .list-group-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .animal {
   background: #fff;
+}
+
+.animal h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.animal h3 a {
+  color: #000;
 }
 
 .animal.animal-single {
@@ -10541,6 +10559,10 @@ body,
 
 .animal form {
   margin-top: 15px;
+}
+
+.animal .zajawka {
+  margin-top: 10px;
 }
 
 .material-icons {
@@ -10641,5 +10663,9 @@ body,
 .roundcorners {
   border-radius: 10px;
   overflow: hidden;
+}
+
+a:hover {
+  text-decoration: none;
 }
 

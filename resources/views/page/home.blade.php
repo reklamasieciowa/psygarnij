@@ -41,22 +41,32 @@
             @foreach($animals as $animal)
 
             <div class="card animal roundcorners boxshadow">
-            <a href="{{route('animal', $animal->id)}}">
+            <a href="{{route('animal', $animal->id)}}" title="{{$animal->name}}, {{$animal->sex}}, {{$animal->age}} @if($animal->age == 1) rok @elseif($animal->age > 1 && $animal->age < 5) lata @else lat @endif - {{config('app.name') }}">
                     <img class="img img-fluid card-img-top" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}" alt="{{$animal->name}}">
             </a>
             @if($animal->verified == 1)
                 <i class="material-icons verified" title="Zweryfikowane">verified_user</i>
             @endif
               <div class="card-body">
-                <h5 class="card-title">
-                    <i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat
-                </h5>
-                <div class="card-text zajawka opis">{{ str_limit(strip_tags($animal->description), 70) }}</div>
-                <a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Zobacz</a>
+                <h3 class="card-title">
+                   <a href="{{route('animal', $animal->id)}}" alt="{{$animal->name}} - {{config('app.name') }}" title="{{$animal->name}} - {{config('app.name') }}"> <i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, 
+                    {{$animal->age}} 
+                    @if($animal->age == 1)
+                        rok
+                    @elseif($animal->age > 1 && $animal->age < 5)
+                        lata
+                    @else
+                        lat
+                    @endif
+                   </a>
+                </h3>
+                <!-- <div class="card-text zajawka opis">{{ str_limit(strip_tags($animal->description), 70) }}</div>
+                <a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Zobacz</a> -->
             </div>
+            
             <ul class="list-group list-group-flush homeless">
                 @if($animal->homeless == 1)
-                <li class="list-group-item error"><i class="material-icons home">home</i> Szuka domu!</li>
+                <li class="list-group-item error"><i class="material-icons home">home</i> Szuka domu. <a href="#">Psygarnij go!</a> </li>
                 @elseif($animal->homeless == 2)
                 <li class="list-group-item error"><i class="material-icons new_releases">new_releases</i> Zaginiony!</li>
                 @else
@@ -65,9 +75,8 @@
 
                 <li class="list-group-item dodany"><i class="material-icons today">today</i> Dodany {{Carbon\Carbon::parse($animal->added)->diffForHumans()}}</li>
                 <li class="list-group-item lokalizacja"><i class="material-icons room">room</i> {{$animal->location}}</li>
-                 
             </ul>
-
+            
             @if (Auth::check() && Gate::allows('isadmin'))
             <ul class="list-group list-group-flush admin-btn">
 

@@ -145,4 +145,11 @@ class PageController extends Controller
         $request->session()->flash('status', 'Strona usunięta.');
         return redirect()->route('home');
     }
+
+    //admin
+    public function pagesIndex()
+    {
+        $pages = Page::all();
+        return view('admin.pages', compact('pages'));
+    }
 }

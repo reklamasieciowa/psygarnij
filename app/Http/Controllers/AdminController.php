@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Animal;
 use App\Page;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,19 +16,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $animals = Animal::all();
-        return view('admin.index', compact('animals'));
+        return view('admin.index');
     }
 
-    public function animalsIndex()
+    public function userIndex()
     {
-        $animals = Animal::all();
-        return view('admin.animals', compact('animals'));
-    }
+        $users = User::all();
 
-    public function pagesIndex()
-    {
-        $pages = Page::all();
-        return view('admin.pages', compact('pages'));
+        return view('admin.users', compact('users'));
     }
 }

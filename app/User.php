@@ -28,21 +28,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles()
+    public function Roles()
     {
         return $this->belongsToMany(Role::class);
     }
 
     public function Animals()
     {
-        return $this->hasMany(Animal::class);   
+        return $this->hasMany(Animal::class);
     }
 
     public function hasRole($id)
     {
-         $roles = Auth::user()->roles;
-        foreach($roles as $role) {
-            if($role->id == $id){
+        foreach($this->roles as $role) {
+            if($role->id === $id){
                 return true;
             }
         }

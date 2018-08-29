@@ -26,7 +26,15 @@
                         <p class="success"><i class="material-icons favorite">favorite</i> Psygarnięty ;)</p>
                         @endif
                     </div>
-                    <p class="imie"><i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}} lat</p>
+                    <p class="imie"><i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, {{$animal->age}}
+                    @if($animal->age == 1)
+                        rok
+                    @elseif($animal->age > 1 && $animal->age < 5)
+                        lata
+                    @else
+                        lat
+                    @endif
+                    </p>
                     
                     <p class="lokalizacja"><i class="material-icons room">room</i> {{$animal->location}}</p>
                     <p class="dodany"><i class="material-icons today">today</i> Dodany {{Carbon\Carbon::parse($animal->added)->diffForHumans()}} przez {{$animal->user->name}}</p>

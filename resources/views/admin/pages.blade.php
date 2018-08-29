@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('css')
+  @include('admin.layouts.datatablesheader')
+@endsection
+
 @section('content')
 <div class="container content">
   <div class="row">
@@ -9,7 +13,7 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <table class="table table-striped table-hover ">
+      <table class="table table-striped table-hover datatables">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -77,4 +81,7 @@
 
     </div>
   </div>
+  @endsection
+  @section('footerScripts')
+    @include('admin.layouts.datatablesfooter')
   @endsection
