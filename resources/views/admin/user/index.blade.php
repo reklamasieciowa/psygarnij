@@ -8,7 +8,9 @@
 <div class="container content">
     <div class="row">
         <div class="col-lg-12">
-            <h1>Użytkownicy</h1>
+            <h1>Użytkownicy
+              <a class="btn-add" href="{{route('usercreate')}}"><i class="material-icons">add_circle</i></a>
+            </h1>
         </div>
     </div>
     <div class="row">

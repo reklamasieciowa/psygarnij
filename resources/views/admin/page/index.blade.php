@@ -8,7 +8,9 @@
 <div class="container content">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Strony/Newsy</h1>
+      <h1>Strony/Newsy
+      <a class="btn-add" href="{{route('pagecreate')}}"><i class="material-icons">add_circle</i></a>
+      </h1>
     </div>
   </div>
   <div class="row">
@@ -42,14 +44,15 @@
 
             <td><a href="{{route('pageedit', $page->slug)}}"><button class="btn btn-primary btn-sm"><i class="material-icons">create</i></button></a>
             </td>
-            <td><button class="btn btn-danger usun" data-toggle="modal" data-target="#modalusun-{{$page->id}}"><i class="material-icons">delete_sweep</i></button>
+            <td><button class="btn btn-danger btn-sm usun" data-toggle="modal" data-target="#modalusun-{{$page->id}}"><i class="material-icons">delete_sweep</i></button>
               <div class="modal fade" tabindex="-1" role="dialog" id="modalusun-{{$page->id}}">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
 
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
                       <h4 class="modal-title">Czy na pewno usunąć {{$page->title}}?</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+
                     </div>
 
                     <div class="modal-body">

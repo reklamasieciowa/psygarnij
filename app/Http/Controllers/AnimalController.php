@@ -20,19 +20,19 @@ class AnimalController extends Controller
     public function index()
     {
         $animals = Animal::where('homeless', '=', 1)->paginate(12);
-        return view('page.home', compact('animals'));
+        return view('front.page.home', compact('animals'));
     }
 
     public function zaginione()
     {
         $animals = Animal::where('homeless', '=', 2)->paginate(12);
-        return view('page.home', compact('animals'));
+        return view('front.page.home', compact('animals'));
     }
 
     public function psygarniete()
     {
         $animals = Animal::where('homeless', '=', 0)->paginate(12);
-        return view('page.home', compact('animals'));
+        return view('front.page.home', compact('animals'));
     }
 
     /**
@@ -42,7 +42,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view('animal.create');
+        return view('admin.animal.create');
     }
 
     /**
@@ -103,7 +103,7 @@ class AnimalController extends Controller
 
     $animal->save();
     $request->session()->flash('status', $animal->name.' zapisany.');
-    return redirect()->route('home');
+    return redirect()->route('admin.animals');
 }
 
     /**
@@ -114,7 +114,7 @@ class AnimalController extends Controller
      */
     public function show(Animal $animal)
     {
-        return view('animal.show', compact('animal'));
+        return view('front.animal.show', compact('animal'));
     }
 
     /**
@@ -125,7 +125,7 @@ class AnimalController extends Controller
      */
     public function edit(Animal $animal)
     {
-        return view('animal.edit', compact('animal'));
+        return view('admin.animal.edit', compact('animal'));
     }
 
     /**
@@ -181,7 +181,7 @@ class AnimalController extends Controller
 
         $animal->save();
         $request->session()->flash('status', $animal->name.' zapisany.');
-        return redirect()->route('home');
+        return redirect()->route('admin.animals');
     }
 
     //Admin
@@ -189,7 +189,7 @@ class AnimalController extends Controller
     public function animalsIndex()
     {
         $animals = Animal::all();
-        return view('admin.animals', compact('animals'));
+        return view('admin.animal.index', compact('animals'));
     }
 
     public function verify(Request $request, Animal $animal)

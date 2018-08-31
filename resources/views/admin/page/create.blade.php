@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container content">
@@ -9,17 +9,17 @@
                 {{ method_field('PUT') }}
                 <div class="row">
                     <div class="form-group col-lg-12">
-                        <label for="title">Title</label>
+                        <label for="title">Tytuł</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}" required>
                     </div>
 
                     <div class="form-group col-lg-12">
-                        <label for="metatitle">Meta title</label>
+                        <label for="metatitle">Meta tytuł</label>
                         <input type="text" class="form-control" id="metatitle" name="metatitle" value="{{old('metatitle')}}" required>
                     </div>
 
                     <div class="form-group col-lg-12">
-                        <label for="metadescription">Meta description</label>
+                        <label for="metadescription">Meta opis</label>
                         <input type="text" class="form-control" id="metadescription" name="metadescription" value="{{old('metadescription')}}" required>
                     </div>
 
@@ -54,6 +54,6 @@
 </div>
 @endsection
 
-@section('footerscripts')
+@section('footerScripts')
 @include('admin.layouts.tinymce.tinymce')
 @endsection

@@ -24,7 +24,7 @@ class PageController extends Controller
      */
     public function create()
     {
-         return view('page.create');
+         return view('admin.page.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class PageController extends Controller
 
         $page->save();
         $request->session()->flash('status', $page->title.' zapisana.');
-        return redirect()->route('home');
+        return redirect()->route('admin.pages');
     }
 
     /**
@@ -75,13 +75,13 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        return view('page.show', compact('page'));
+        return view('front.page.show', compact('page'));
     }
 
     public function shownews()
     {
         $pages = Page::where('news', '=', 1)->orderBy('created_at', 'desc')->paginate(12);
-        return view('page.news', compact('pages'));
+        return view('front.page.news', compact('pages'));
     }
 
     /**
@@ -92,7 +92,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        return view('page.edit', compact('page'));
+        return view('admin.page.edit', compact('page'));
     }
 
     /**
@@ -127,7 +127,7 @@ class PageController extends Controller
 
         $page->save();
         $request->session()->flash('status', $page->title.' zapisana.');
-        return redirect()->back();
+        return redirect()->route('admin.pages');
     }
 
     /**
@@ -143,13 +143,13 @@ class PageController extends Controller
         $page->delete();
 
         $request->session()->flash('status', 'Strona usunięta.');
-        return redirect()->route('home');
+        return redirect()->route('admin.pages');
     }
 
     //admin
     public function pagesIndex()
     {
         $pages = Page::all();
-        return view('admin.pages', compact('pages'));
+        return view('admin.page.index', compact('pages'));
     }
 }

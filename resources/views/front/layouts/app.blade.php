@@ -18,13 +18,13 @@
 </head>
 <body>
     <div id="app" class="container-fluid">
-        @include('layouts.nav')
+        @include('front.layouts.nav')
 
         <div class="container beforecontent">
             <div class="row">
                 <div class="col-lg-12">
-                    @include('layouts.flash')
-                    @include('layouts.errors')
+                    @include('front.layouts.flash')
+                    @include('front.layouts.errors')
                 </div>
             </div>
         </div>
@@ -32,10 +32,10 @@
         @yield('content')
     </div>
     <footer>
-        @include('layouts.nav')
+        @include('front.layouts.nav')
         
         <div id="credentials" class="col-lg-12">
-         @include('layouts.footer')
+         @include('front.layouts.footer')
      </div>
 
  </footer>

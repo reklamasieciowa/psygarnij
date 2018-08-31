@@ -48,7 +48,10 @@ Route::group(['middleware' => 'checkifadmin'], function () {
 
 	Route::get('/admin/zwierzaki', 'AnimalController@animalsIndex')->name('admin.animals');
 	Route::get('/admin/strony', 'PageController@pagesIndex')->name('admin.pages');
-	Route::get('/admin/uzytkownicy', 'AdminController@userIndex')->name('admin.users');
+	Route::get('/admin/uzytkownicy', 'UserController@Index')->name('admin.users');
+
+	Route::get('/admin/uzytkownicy/dodaj', 'UserController@create')->name('usercreate');
+	Route::put('/admin/uzytkownicy/dodaj', 'UserController@store')->name('userstore');;
 
 
 });

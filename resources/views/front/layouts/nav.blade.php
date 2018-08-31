@@ -60,7 +60,7 @@
     </li>
     @endif
 </ul>
-@include('layouts.search')
+@include('front.layouts.search')
 
 </div>
 </nav>

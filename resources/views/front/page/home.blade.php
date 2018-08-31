@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('front.layouts.app')
 
 @section('metatitle')
 <title>Nie kupuj, Psygarnij!</title>

@@ -8,7 +8,9 @@
 <div class="container content">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Zwierzaki</h1>
+      <h1>Zwierzaki
+      <a class="btn-add" href="{{route('animalcreate')}}"><i class="material-icons">add_circle</i></a>
+      </h1>
     </div>
   </div>
   <div class="row">

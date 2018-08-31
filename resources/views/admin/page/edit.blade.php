@@ -1,12 +1,8 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container content">
     <div class="row">
-                <div class="col-lg-12">
-                    @include('layouts.flash')
-                    @include('layouts.errors')
-                </div>
                 <div class="col-lg-12 page">
                     <div class="page">
                         <form method="POST">
@@ -66,6 +62,6 @@
 </div>
 @endsection
 
-@section('footerscripts')
+@section('footerScripts')
     @include('admin.layouts.tinymce.tinymce')
 @endsection

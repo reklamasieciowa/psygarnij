@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('front.layouts.app')
 
 @section('metatitle')
 <title>Pies {{$animal->name }} @if($animal->homeless == 1)szuka domu!@elseif($animal->homeless == 2)zaginiony!@else psygarnięty ;)@endif</title>

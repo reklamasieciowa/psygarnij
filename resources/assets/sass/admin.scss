@@ -13,7 +13,7 @@ body, .container-fluid {
 }
 
 .alert {
-  margin: 0 -15px 20px -15px;
+  margin: 20px -15px;
 }
 
 .content {
@@ -36,6 +36,18 @@ nav {
 		&:hover {
 			color: rgba(255,255,255,1)
 		}
+
+    .material-icons {
+      font-size: 2rem;
+    }
+
+    &.dropdown-toggle.icon {
+      padding-top: 0;
+
+      &::after {
+        vertical-align: 0.36em;
+      }
+    }
 	}
 
 	.divider {
@@ -76,6 +88,10 @@ nav {
   }
 }
 
+h1 {
+  margin-bottom: 0;
+}
+
 .card-columns .card {
     margin-bottom: 1.25rem;
 }
@@ -101,6 +117,28 @@ nav {
   }
 }
 
+.modal-header {
+  .close {
+    float:both;
+  }
+}
+
+.btn-info {
+  color: #fff;
+}
+
+.btn-add {
+  .material-icons{
+    font-size: 2.5rem;
+    position: relative;
+    top: 12px;
+  }
+}
+
+#lfm {
+  color: #fff;
+}
+
 .boxshadow {
     -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
     -moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
@@ -110,4 +148,3 @@ nav {
     border-radius: 10px;
     overflow: hidden;
 }
-

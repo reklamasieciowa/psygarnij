@@ -1,12 +1,8 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container content">
     <div class="row">
-        <div class="col-lg-12">
-            @include('layouts.flash')
-            @include('layouts.errors')
-        </div>
         <div class="col-lg-12 animal boxshadow roundcorners">
             <div class="animal">
                 <form method="POST" enctype="multipart/form-data">
@@ -144,7 +140,7 @@
 </div>
 @endsection
 
-@section('footerscripts')
+@section('footerScripts')
 @include('admin.layouts.tinymce.tinymce')
 <script src="{{ asset('/vendor/laravel-filemanager/js/lfm.js') }}"></script>
 <script>

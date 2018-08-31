@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{{ url('/') }}">Psygarnij</a>
+  <a class="navbar-brand" href="{{ url('/') }}">Psygarnij | Admin panel</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
@@ -15,15 +15,15 @@
         <li class="nav-item"><a class="nav-link" href="{{ route('pageshow', ['kontakt']) }}">Kontakt</a></li> -->
         
         <li class="nav-item dropdown float-right">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dodaj <span class="caret"></span>
+            <a class="nav-link dropdown-toggle icon" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">add_box</i> <span class="caret"></span>
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                     <a class="dropdown-item" href="{{route('animalcreate')}}">Zwierzaka</a>
                     <a class="dropdown-item" href="{{route('pagecreate')}}">Newsa/Stronę</a>
-                    <a class="dropdown-item" href="#">Admina</a>
+                    <a class="dropdown-item" href="{{route('usercreate')}}">Użytkownika</a>
                 </li>
             </ul>
         </li>
@@ -62,7 +62,7 @@
     </li>
    
 </ul>
-@include('layouts.search')
+
 
 </div>
 </nav>

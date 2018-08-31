@@ -21,8 +21,8 @@
        <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                @include('layouts.flash')
-                @include('layouts.errors')
+                @include('admin.layouts.flash')
+                @include('admin.layouts.errors')
                 <div class="row">
                     @yield('content')
                 </div>
