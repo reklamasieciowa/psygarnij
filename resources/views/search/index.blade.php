@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('metatitle')
-<title>Wyniki wyszukiwania dla {{ $q }} - Psygarnij.</title>
+<title>Wyniki wyszukiwania dla {{ $q }} - {{ $siteSettings->app_name }}.</title>
 @endsection
 
 @section('metadescription')

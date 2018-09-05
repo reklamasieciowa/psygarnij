@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Settings;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -24,6 +25,13 @@ class AppServiceProvider extends ServiceProvider
          Gate::define('isadmin', function ($user) {
              return $user->hasRole(1);
          });
+
+         //global variable with site settings
+         view()->composer('*',function($view) {
+            $view->with('siteSettings', Settings::first());
+            // if you need to access in controller and views:
+            //Config::set('something', $something); 
+        });
     }
 
     /**

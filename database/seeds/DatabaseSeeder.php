@@ -67,5 +67,10 @@ class DatabaseSeeder extends Seeder
 		]);
 
 		$news = factory(App\Page::class, 10)->create();
+
+		$settings = factory(App\Settings::class)->create([
+			'app_name' => 'Tytuł strony',
+	        'watermark' => 'storage/uploads/img/psygarnij.png',
+		]);
 	}
 }

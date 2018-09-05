@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        'UniSharp\LaravelFilemanager\Events\ImageWasUploaded' => [
+        'App\Listeners\ImageUploadListener',
+        ],
     ];
 
     /**

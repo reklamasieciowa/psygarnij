@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('metatitle')
-<title>Aktualności Psygarnij.</title>
+<title>Aktualności - {{ $siteSettings->app_name }}</title>
 @endsection
 
 @section('metadescription')

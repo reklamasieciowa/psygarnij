@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $pageRoles = Role::all();
+
+        return view('admin.user.create', compact('pageRoles'));
     }
 
     /**
@@ -37,7 +41,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'roles' => 'array',
+        ]);
+
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        $user->roles()->sync($request['roles']);
+
+        $request->session()->flash('status', $request->name.' dodany.');
+
+        return redirect()->route('admin.users');
     }
 
     /**
@@ -46,7 +67,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -57,9 +78,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $pageRoles = Role::all();
+
+        return view('admin.user.edit', compact('user','pageRoles'));
     }
 
     /**
@@ -69,9 +92,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'roles' => 'array',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;     
+        $user->roles()->sync($request['roles']);
+
+        $user->save();
+
+        $request->session()->flash('status', $user->name.' zapisany.');
+
+        return redirect()->route('admin.users');
     }
 
     /**
@@ -80,8 +117,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, User $user)
     {
-        //
+        
+        $user->roles()->detach();
+
+        $user->delete();
+
+        $request->session()->flash('status', $user->name.' usunięty.');
+        return redirect()->route('admin.users');
     }
 }

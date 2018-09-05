@@ -47,7 +47,7 @@ $factory->define(App\Animal::class, function (Faker\Generator $faker) {
         'homeless' => $faker->biasedNumberBetween($min = 0, $max = 2),
         'avatar' => 'storage/uploads/img/pies.jpg',
         'description'=> $faker->paragraph,
-        'added' => $faker-> dateTimeBetween($startDate = '-4 years', $endDate = 'now', $timezone = date_default_timezone_get()),
+        'added' => $faker->dateTimeBetween($startDate = '-4 years', $endDate = 'now', $timezone = date_default_timezone_get()),
         'verified' => $faker->boolean,
         'user_id' => $faker->biasedNumberBetween($min = 1, $max = 3),
     ];
@@ -64,3 +64,9 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Settings::class, function (Faker\Generator $faker) {
+    return [
+        'app_name' => 'app_name',
+        'watermark' => 'watermark',
+    ];
+});

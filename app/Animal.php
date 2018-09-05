@@ -7,6 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
     use Searchable;
+
+    public function toSearchableArray()
+    {
+        return [
+             'id' => $this->id,
+             'name' => $this->name,
+             'sex' => $this->sex,
+             'age' => $this->age,
+             'location' => $this->location,
+             'description' => $this->description,
+             'added' => $this->added,
+        ];
+    }
     
     protected $fillable = [
     	'name', 'type_id', 'age', 'homeless','avatar'

@@ -18,42 +18,41 @@
                         <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" required>
                     </div>
 
-                    //newsletter'a brak
 
-                    //powiadomienia brak
-
-                        <div class="form-group col-lg-12">
-                            <label for="password">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <label for="password-confirm">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                        </div>
 
                     <div class="form-group col-lg-12">
-                        <div class="checkbox">
-                         <label>
-                            <input type="checkbox" id="news" name="news" value="1">
-                            Wyświetlaj w aktualnościach.
-                        </label>
+                        <label class="col-form-label ">Role: </label>
+                            @foreach($pageRoles as $role)
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" id="roles[]" name="roles[]" value="{{ $role->id }}">
+                                <label class="form-check-label active" for="role">{{ $role->name }}</label>
+                            </div>
+                            @endforeach
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label for="password">{{ __('Password') }}</label>
+                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                        @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <hr />
-                <div class="form-group col-lg-12">
-                    <button type="submit" class="btn btn-primary">Zapisz</button>
+                <div class="row">
+                    <hr />
+                    <div class="form-group col-lg-12">
+                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 </div>
 @endsection
 

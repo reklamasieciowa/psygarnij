@@ -73,20 +73,6 @@ class AnimalController extends Controller
        if($request->avatar){
         $path = public_path(str_replace('laravel-filemanager', 'storage/uploads/img', $request->avatar));
 
-            $img = Image::make($path);
-
-            $img->fit(600, 450);
-
-                //add waternark to image
-            if(Storage::exists('uploads/img/psygarnij.png')) {
-
-                $watermark = Image::make('storage/uploads/img/psygarnij.png');
-
-                $img->insert($watermark, 'bottom-right', 10, 10);
-            }
-
-            $img->save($path);
-
             $animal->avatar = $request->avatar;
         } else {
             //default avatar
@@ -159,21 +145,6 @@ class AnimalController extends Controller
         if($request->avatar){
             $path = public_path(str_replace('laravel-filemanager', 'storage/uploads/img', $request->avatar));
 
-
-            $img = Image::make($path);
-
-            $img->fit(600, 450);
-
-            //add waternark to image
-            if(Storage::exists('uploads/img/psygarnij.png')) {
-
-                $watermark = Image::make('storage/uploads/img/psygarnij.png');
-
-                $img->insert($watermark, 'bottom-right', 10, 10);
-            }
-
-            $img->save($path);
-
             $animal->avatar = $request->avatar;
         }
 
@@ -184,8 +155,6 @@ class AnimalController extends Controller
         return redirect()->route('admin.animals');
     }
 
-    //Admin
-
     public function animalsIndex()
     {
         $animals = Animal::all();
@@ -194,7 +163,6 @@ class AnimalController extends Controller
 
     public function verify(Request $request, Animal $animal)
     {
-        $animal = Animal::find($animal->id);
 
         if($animal->verified == 0) {
             $animal->verified = 1;
@@ -216,8 +184,6 @@ class AnimalController extends Controller
      */
     public function destroy(Request $request, Animal $animal)
     {
-        //find and destroy animal
-        $animal = Animal::find($animal->id);
         $animal->delete();
 
         //delete avatar file if exists

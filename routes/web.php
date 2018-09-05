@@ -29,7 +29,7 @@ Route::get('/psygarniete/', 'AnimalController@psygarniete')->name('psygarniete')
 
 Route::get('/aktualnosci/', 'PageController@shownews')->name('pagenews');
 
-Route::group(['middleware' => 'checkifadmin'], function () {
+Route::group(['middleware' => 'checkifadmin', 'prefix' => 'admin'], function () {
 	Route::get('/strona/edytuj/{page}', 'PageController@edit')->name('pageedit');
 	Route::patch('/strona/edytuj/{page}', 'PageController@update');
 	Route::get('/strona/dodaj/', 'PageController@create')->name('pagecreate');
@@ -44,15 +44,21 @@ Route::group(['middleware' => 'checkifadmin'], function () {
 
 	Route::get('/zwierzak/weryfikacja/{animal}', 'AnimalController@verify')->name('animalverify');
 
-	Route::get('/admin', 'AdminController@index')->name('admin.index');
+	Route::get('/', 'AdminController@index')->name('admin.index');
 
-	Route::get('/admin/zwierzaki', 'AnimalController@animalsIndex')->name('admin.animals');
-	Route::get('/admin/strony', 'PageController@pagesIndex')->name('admin.pages');
-	Route::get('/admin/uzytkownicy', 'UserController@Index')->name('admin.users');
+	Route::get('/zwierzaki', 'AnimalController@animalsIndex')->name('admin.animals');
+	Route::get('/strony', 'PageController@pagesIndex')->name('admin.pages');
+	Route::get('/uzytkownicy', 'UserController@Index')->name('admin.users');
 
-	Route::get('/admin/uzytkownicy/dodaj', 'UserController@create')->name('usercreate');
-	Route::put('/admin/uzytkownicy/dodaj', 'UserController@store')->name('userstore');;
+	Route::get('/uzytkownicy/dodaj', 'UserController@create')->name('usercreate');
+	Route::put('/uzytkownicy/dodaj', 'UserController@store')->name('userstore');
 
+	Route::get('/uzytkownicy/edytuj/{user}', 'UserController@edit')->name('useredit');
+	Route::patch('/uzytkownicy/edytuj/{user}', 'UserController@update');
+	Route::delete('/uzytkownicy/usun/{user}', 'UserController@destroy')->name('userdestroy');
+
+	Route::get('/ustawienia', 'SettingsController@edit')->name('settingsedit');
+	Route::patch('/ustawienia', 'SettingsController@update');
 
 });
 

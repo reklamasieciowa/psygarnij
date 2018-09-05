@@ -51,7 +51,7 @@
                 @endif
               </td>
             <td>{{Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
-            <td><a href="{{route('animaledit', $user->id)}}"><button class="btn btn-primary btn-sm"><i class="material-icons">create</i></button></a>
+            <td><a href="{{route('useredit', $user->id)}}"><button class="btn btn-primary btn-sm"><i class="material-icons">create</i></button></a>
             </td>
             <td>
             @if(Auth::user()->id !== $user->id)
@@ -66,7 +66,7 @@
                       </div>
 
                       <div class="modal-body">
-                          <form method="POST" action="{{route('animaldestroy', $user->id)}}">
+                          <form method="POST" action="{{route('userdestroy', $user->id)}}">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
 

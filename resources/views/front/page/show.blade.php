@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('metatitle')
-    <title>{{$page->title}}</title>
+    <title>{{$page->title}} - {{ $siteSettings->app_name }}</title>
 @endsection
 
 @section('metadescription')
