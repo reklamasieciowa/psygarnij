@@ -58,48 +58,28 @@
                     <div class="form-group col-lg-12">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="homeless" id="homeless" value="1"
-                                @if(old('homeless') == 1)
+                                <input type="radio" name="status" id="status" value="1"
+                                @if(old('status') == 1)
                                 checked
                                 @endif
                                 >
                                 Do psygarnięcia
                             </label>
                             <label>
-                                <input type="radio" name="homeless" id="homeless" value="2"
-                                @if(old('homeless') == 2)
+                                <input type="radio" name="status" id="status" value="2"
+                                @if(old('status') == 2)
                                 checked
                                 @endif
                                 >
                                 Zaginiony
                             </label>
                             <label>
-                                <input type="radio" name="homeless" id="homeless" value="0" 
-                                @if(!empty(old('homeless')) && old('homeless') == 0)
+                                <input type="radio" name="status" id="status" value="0" 
+                                @if(!empty(old('status')) && old('status') == 0)
                                 checked
                                 @endif
                                 >
                                 Psygarnięty
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <div class="radio">
-                              <label>
-                                <input type="radio" name="verified" id="verified" value="0" 
-                                @if(!empty(old('verified')) && old('verified') == 0)
-                                checked
-                                @endif
-                                >
-                                Niezweryfikowany
-                            </label>
-                            <label>
-                                <input type="radio" name="verified" id="verified" value="1"
-                                @if(empty(old('verified')) or old('verified') == 1)
-                                checked
-                                @endif
-                                >
-                                Zweryfikowany
                             </label>
                         </div>
                     </div>
@@ -122,7 +102,7 @@
                     </div>
                     <div class="form-row">
                          <div class="col-lg-12">
-                            <input id="thumbnail" class="form-control" type="text" id="avatar" name="avatar">
+                            <input id="thumbnail" class="form-control" type="hidden" id="avatar" name="avatar">
                         </div>
                     </div>
                 </div>

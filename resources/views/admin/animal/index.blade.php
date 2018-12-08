@@ -24,7 +24,6 @@
             <th scope="col"><i class="material-icons room">room</i></th>
             <th scope="col">Status</th>
             <th scope="col"><i class="material-icons today">today</i></th>
-            <th scope="col">Zweryfikuj</th>
             <th scope="col">Edytuj</th>
             <th scope="col">Usuń</th>
           </tr>
@@ -38,28 +37,14 @@
             <td><img src="{{asset($animal->avatar)}}" width="100px;"></td>
             <td>{{ $animal->name }}, {{ $animal->sex }}, {{ $animal->age }} lat</td>
             <td>{{$animal->location}}</td>
-            <td>@if($animal->homeless == 1)
+            <td>@if($animal->status == 1)
               <i class="material-icons home">home</i>
-              @elseif($animal->homeless == 2)
+              @elseif($animal->status == 2)
               <i class="material-icons new_releases">new_releases</i>
               @else
               <i class="material-icons favorite">favorite</i>
             @endif</td>
             <td>{{Carbon\Carbon::parse($animal->added)->diffForHumans()}}</td>
-            <td>
-              <a href="{{route('animalverify', $animal->id)}}">
-
-                @if($animal->verified == 1)
-                <button class="btn btn-success btn-sm">
-                  <i class="material-icons" title="Cofnij weryfikację">verified_user</i>
-                </button>
-                @else
-                <button class="btn btn-danger btn-sm">
-                  <i class="material-icons" title="Zweryfikuj">remove_circle</i>
-                </button>
-                @endif
-              </a>
-            </td>
             <td><a href="{{route('animaledit', $animal->id)}}"><button class="btn btn-primary btn-sm"><i class="material-icons">create</i></button></a>
             </td>
             <td><button class="btn btn-danger usun btn-sm" data-toggle="modal" data-target="#modalusun-{{$animal->id}}"><i class="material-icons">delete_sweep</i></button>

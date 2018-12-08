@@ -44,11 +44,10 @@ $factory->define(App\Animal::class, function (Faker\Generator $faker) {
         'sex' => $faker->randomElement($array = array ('samiec','samica')),
         'age' => $faker->biasedNumberBetween($min = 1, $max = 15),
         'location' => $faker->city,
-        'homeless' => $faker->biasedNumberBetween($min = 0, $max = 2),
+        'status' => $faker->biasedNumberBetween($min = 0, $max = 2),
         'avatar' => 'storage/uploads/img/pies.jpg',
         'description'=> $faker->paragraph,
         'added' => $faker->dateTimeBetween($startDate = '-4 years', $endDate = 'now', $timezone = date_default_timezone_get()),
-        'verified' => $faker->boolean,
         'user_id' => $faker->biasedNumberBetween($min = 1, $max = 3),
     ];
 });

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container content">
+<div class="container content boxshadow roundcorners">
     <div class="row">
         <div class="col-lg-12 page">
             <form method="POST" action="{{ route('userstore') }}" aria-label="{{ __('Register') }}">

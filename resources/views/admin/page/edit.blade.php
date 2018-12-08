@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container content">
+<div class="container content boxshadow roundcorners">
     <div class="row">
                 <div class="col-lg-12 page">
                     <div class="page">
@@ -25,8 +25,8 @@
                                 </div>
                                 
                                 <div class="form-group col-lg-12">
-                                    <label for="slug">Odnośnik (bez pl znaków)</label>
-                                    <input type="text" class="form-control" id="slug" name="slug" value="{{$page->slug}}" required>
+                                    <label for="slug">Odnośnik <em>(<strong>Opcjonalnie</strong>, bez pl i białych znaków)</em></label>
+                                    <input type="text" class="form-control" id="slug" name="slug" value="{{$page->slug}}">
                                 </div>
 
                                 <div class="form-group col-lg-12">

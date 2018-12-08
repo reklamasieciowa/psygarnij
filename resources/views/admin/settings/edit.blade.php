@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container content">
+<div class="container content boxshadow roundcorners">
     <div class="row">
         <div class="col-lg-12 ettings">
             <div class="settings">
@@ -15,12 +15,10 @@
                         </div>
                         
                         <div class="form-group col-lg-12">
-                            <div class="form-row">
-                                <label for="watermark">Znak wodny (najlepiej PNG do 200x200px)</label>
-                                <input type="file" class="form-control-file" id="watermark" name="watermark">
-                                <div class="col-lg-12">
-                                    <img id="holder" style="margin:15px 0;max-height:150px;" src="{{ asset('storage/'.$siteSettings->watermark) }}">
-                                </div>
+                            <label for="watermark">Znak wodny (najlepiej PNG do 200x200px)</label>
+                            <input type="file" class="form-control-file" id="watermark" name="watermark">
+                            <div class="col-lg-12">
+                                <img id="holder" style="margin:15px 0;max-height:150px;" src="{{ asset('storage/'.$siteSettings->watermark) }}">
                             </div>
                         </div>
                     </div>

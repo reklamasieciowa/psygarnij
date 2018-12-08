@@ -20,11 +20,10 @@ class CreateAnimalsTable extends Migration
             $table->string('sex');
             $table->integer('age');
             $table->string('location');
-            $table->boolean('homeless')->default('1');
+            $table->boolean('status')->default('1');
             $table->string('avatar');
             $table->text('description');
             $table->dateTime('added');
-            $table->boolean('verified')->default('1');
             $table->integer('user_id');
             $table->timestamps();
         });

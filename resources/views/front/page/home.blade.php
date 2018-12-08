@@ -40,88 +40,96 @@
         <div class="card-columns">
             @foreach($animals as $animal)
 
-            <div class="card animal roundcorners boxshadow">
-            <a href="{{route('animal', $animal->id)}}" title="{{$animal->name}}, {{$animal->sex}}, {{$animal->age}} @if($animal->age == 1) rok @elseif($animal->age > 1 && $animal->age < 5) lata @else lat @endif - {{config('app.name') }}">
-                    <img class="img img-fluid card-img-top" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}" alt="{{$animal->name}}">
-            </a>
-            @if($animal->verified == 1)
-                <i class="material-icons verified" title="Zweryfikowane">verified_user</i>
-            @endif
-              <div class="card-body">
-                <h3 class="card-title">
-                   <a href="{{route('animal', $animal->id)}}" alt="{{$animal->name}} - {{config('app.name') }}" title="{{$animal->name}} - {{config('app.name') }}"> <i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, 
-                    {{$animal->age}} 
-                    @if($animal->age == 1)
-                        rok
-                    @elseif($animal->age > 1 && $animal->age < 5)
-                        lata
-                    @else
-                        lat
-                    @endif
-                   </a>
-                </h3>
-                <!-- <div class="card-text zajawka opis">{{ str_limit(strip_tags($animal->description), 70) }}</div>
-                <a class="btn btn-primary" href="{{route('animal', $animal->id)}}">Zobacz</a> -->
-            </div>
-            
-            <ul class="list-group list-group-flush homeless">
-                @if($animal->homeless == 1)
-                <li class="list-group-item error"><i class="material-icons home">home</i> Szuka domu. <a href="#">Psygarnij go!</a> </li>
-                @elseif($animal->homeless == 2)
-                <li class="list-group-item error"><i class="material-icons new_releases">new_releases</i> Zaginiony!</li>
+            <!-- Card -->
+            <div class="card animal">
+
+              <!-- Card image -->
+              <div class="view overlay">
+                <a href="{{route('animal', $animal->id)}}" title="{{$animal->name}}, {{$animal->sex}}, {{$animal->age}} @if($animal->age == 1) rok @elseif($animal->age > 1 && $animal->age < 5) lata @else lat @endif - {{config('app.name') }}">
+                    <img class="card-img-top" src="{{ asset($animal->avatar) }}" alt="{{$animal->name}}" title="{{$animal->name}}">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body">
+
+            <!-- Title -->
+            <h3 class="card-title">
+             <a href="{{route('animal', $animal->id)}}" alt="{{$animal->name}} - {{config('app.name') }}" title="{{$animal->name}} - {{config('app.name') }}"> <i class="material-icons pets">pets</i> {{$animal->name}}, {{$animal->sex}}, 
+                {{$animal->age}} 
+                @if($animal->age == 1)
+                rok
+                @elseif($animal->age > 1 && $animal->age < 5)
+                lata
                 @else
-                <li class="list-group-item success"><i class="material-icons favorite">favorite</i> Psygarnięty ;)</li>
+                lat
+                @endif
+            </a>
+        </h3>
+        <!-- Text -->
+        <p class="card-text">
+
+                @if($animal->status == 1)
+                <p><i class="material-icons home">home</i> Szuka domu. <a href="#">Psygarnij go!</a> </p>
+                @elseif($animal->status == 2)
+                <p><i class="material-icons new_releases">new_releases</i> Zaginiony!</p>
+                @else
+                <p><i class="material-icons favorite">favorite</i> Psygarnięty ;)</p>
                 @endif
 
-                <li class="list-group-item dodany"><i class="material-icons today">today</i> Dodany {{Carbon\Carbon::parse($animal->added)->diffForHumans()}}</li>
-                <li class="list-group-item lokalizacja"><i class="material-icons room">room</i> {{$animal->location}}</li>
-            </ul>
-            
-            @if (Auth::check() && Gate::allows('isadmin'))
-            <ul class="list-group list-group-flush admin-btn">
+                <p><i class="material-icons today">today</i> Dodany {{Carbon\Carbon::parse($animal->added)->diffForHumans()}}<p>
+                <p><i class="material-icons room">room</i> {{$animal->location}}</p>
 
-                <li class="list-group-item error">
-                    <a href="{{route('animaledit', $animal->id)}}"><button class="btn btn-primary">Edytuj</button></a>
-                    <button class="btn btn-danger usun" data-toggle="modal" data-target="#modalusun-{{$animal->id}}">Usuń</button>
-                </li>
+        </p>
+        <!-- Button -->
+        @if (Auth::check() && Gate::allows('isadmin'))
 
-                
 
-                <div class="modal fade" tabindex="-1" role="dialog" id="modalusun-{{$animal->id}}">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
 
-                      <div class="modal-header">
-                        <h4 class="modal-title">Czy na pewno usunąć {{$animal->name}}?</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
-                    </div>
+                <a href="{{route('animaledit', $animal->id)}}"><button class="btn btn-primary">Edytuj</button></a>
+                <button class="btn btn-danger usun" data-toggle="modal" data-target="#modalusun-{{$animal->id}}">Usuń</button>
 
-                    <div class="modal-body">
-                        <form method="POST" action="{{route('animaldestroy', $animal->id)}}">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
 
-                            <button type="submit" class="btn btn-danger btn-lg">Usuń</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Anuluj</button>
-                        </form>
-                    </div>
 
-                    <div class="modal-footer">
-                        <p class="text-muted">Operacja jest nieodwracalna.</p>
-                    </div>
 
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="modalusun-{{$animal->id}}">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
 
-    </ul>
-    @endif
+                  <div class="modal-header">
+                    <h4 class="modal-title">Czy na pewno usunąć {{$animal->name}}?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{route('animaldestroy', $animal->id)}}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
+                        <button type="submit" class="btn btn-danger btn-lg">Usuń</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Anuluj</button>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <p class="text-muted">Operacja jest nieodwracalna.</p>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+@endif
 
 </div>
 
+</div>
+<!-- Card -->
 
 
-@endforeach
+    @endforeach
 </div>
 </div>  
 

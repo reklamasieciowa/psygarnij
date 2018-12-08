@@ -19,19 +19,19 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animals = Animal::where('homeless', '=', 1)->paginate(12);
+        $animals = Animal::where('status', '=', 1)->paginate(12);
         return view('front.page.home', compact('animals'));
     }
 
     public function zaginione()
     {
-        $animals = Animal::where('homeless', '=', 2)->paginate(12);
+        $animals = Animal::where('status', '=', 2)->paginate(12);
         return view('front.page.home', compact('animals'));
     }
 
     public function psygarniete()
     {
-        $animals = Animal::where('homeless', '=', 0)->paginate(12);
+        $animals = Animal::where('status', '=', 0)->paginate(12);
         return view('front.page.home', compact('animals'));
     }
 
@@ -58,7 +58,7 @@ class AnimalController extends Controller
             'age' => 'required',
             'description' => 'required',
             'sex' => 'required',
-            'homeless' => 'required'
+            'status' => 'required'
         ]);
 
        $animal = new Animal;
@@ -67,7 +67,7 @@ class AnimalController extends Controller
        $animal->sex = $request->sex;
        $animal->age = $request->age;
        $animal->location = $request->location;
-       $animal->homeless = $request->homeless;
+       $animal->status = $request->status;
        $animal->verified = $request->verified;
 
        if($request->avatar){
@@ -130,7 +130,7 @@ class AnimalController extends Controller
             'added' => 'required',
             'description' => 'required',
             'sex' => 'required',
-            'homeless' => 'required'
+            'status' => 'required'
         ]);
 
         $animal->name = $request->name;
@@ -139,7 +139,7 @@ class AnimalController extends Controller
         $animal->added = $request->added;
         $animal->sex = $request->sex;
         $animal->location = $request->location;
-        $animal->homeless = $request->homeless;
+        $animal->status = $request->status;
         $animal->verified = $request->verified;
         
         if($request->avatar){
@@ -172,7 +172,7 @@ class AnimalController extends Controller
 
         $animal->save();
 
-        $request->session()->flash('status', $animal->name.' zweryfikowany.');
+        $request->session()->flash('status', $animal->name.' zmieniony.');
         return redirect()->back();
     }
 

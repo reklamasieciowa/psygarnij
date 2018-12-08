@@ -13,7 +13,12 @@
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ asset('css/mdb.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
 </head>
 <body>
@@ -41,7 +46,18 @@
  </footer>
 
  <!-- Scripts -->
- <script src="{{ asset('js/app.js') }}"></script>
+<!--  <script src="{{ asset('js/app.js') }}"></script> -->
+
+ <!-- MDB -->
+  <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+
+
  @yield('footerscripts')
 </body>
 </html>

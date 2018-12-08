@@ -39,7 +39,7 @@ class PageController extends Controller
             'title' => 'required',
             'metatitle' => 'required',
             'metadescription' => 'required',
-            'slug' => 'required|unique:pages',
+            'slug' => 'unique:pages',
             'body' => 'required',
         ]);
 
@@ -58,7 +58,13 @@ class PageController extends Controller
         $page->title = $request->title;
         $page->metatitle = $request->metatitle;
         $page->metadescription = $request->metadescription;
-        $page->slug = $request->slug;
+
+        if($request->slug){
+            $page->slug = $request->slug;
+        } else {
+            $page->slug = str_slug($request->title);
+        }
+        
         $page->body = $request->body;
         $page->news = $news;
 
